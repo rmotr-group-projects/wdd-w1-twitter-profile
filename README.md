@@ -1,21 +1,11 @@
-# Twitter Timeline
+# Twitter Profile
 
-For this project we'll have to extend our previous Twitter clone to include the "following" and "timeline" features. You'll also need to write a data migration to change the way we used to store our tweets. For that, check the `tests/test_models.py` test case.
+For this project we'll have to extend our previous Twitter timeline project to include a profile view for our user which will allow her to update her personal information **and her profile picture**.
 
-## Follow/Unfollow 
+This project can end up being considerably easier to solve than the previous ones. In that case, the power of Django will be evident. We recommend you to take a look at the [documentation about managing files](https://docs.djangoproject.com/en/1.9/topics/files/) and in particular, to the [ImageField reference](https://docs.djangoproject.com/en/1.9/ref/models/fields/#django.db.models.ImageField).
 
-When we're browsing some user's feed, we'll need to see a _follow/unfollow_ button (check screenshots below).
+As usual, here's a list of pages to show how it should look:
 
-### Browsing a user I'm not following
+### Home page for user with profile picture
 
-![image](https://cloud.githubusercontent.com/assets/872296/18026719/d71d633c-6c26-11e6-814d-3b29fff9fe0f.png)
-
-### Browsing a user I'm following
-
-![image](https://cloud.githubusercontent.com/assets/872296/18026721/e7f9dfb4-6c26-11e6-8296-05670d7a739c.png)
-
-## Timeline
-
-For this project, when we browse our home page (`/`), we'll need to see a timeline of tweets constructed by our tweets and all the tweets from those users we're following, sorted historically.
-
-![twitter clone](https://cloud.githubusercontent.com/assets/872296/18026739/64dea50a-6c27-11e6-89ec-d05e39ebd545.png)
+![image](https://cloud.githubusercontent.com/assets/872296/18090592/dd699310-6e9b-11e6-9357-bbb31b16eb53.png)

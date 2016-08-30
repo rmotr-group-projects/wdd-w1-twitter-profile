@@ -11,7 +11,6 @@ class TweetForm(forms.ModelForm):
 
 class ProfileForm(forms.Form):
     avatar = forms.ImageField(required=False)
-    username = forms.CharField()
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
     birth_date = forms.DateField(required=False)

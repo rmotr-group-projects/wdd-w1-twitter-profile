@@ -58,8 +58,7 @@ def profile(request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             user = request.user
-            user.avatar = form.cleaned_data["avatar"]
-            user.username = form.cleaned_data["username"]
+            user.avatar = form.cleaned_data["avatar"] or user.avatar
             user.first_name = form.cleaned_data["first_name"]
             user.last_name = form.cleaned_data["last_name"]
             user.birth_date = form.cleaned_data["birth_date"]

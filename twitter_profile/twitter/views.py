@@ -10,7 +10,7 @@ from django.conf import settings
 from django.db.models import Q
 
 from .models import Tweet, Relationship, User
-from .forms import TweetForm
+from .forms import TweetForm, ProfileForm
 
 
 @login_required()
@@ -50,6 +50,33 @@ def home(request, username=None):
         'twitter_profile': user,
         'tweets': tweets,
         'following_profile': following_profile
+    })
+
+
+@login_required()
+def profile(request):
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = request.user
+            user.avatar = form.cleaned_data["avatar"]
+            user.username = form.cleaned_data["username"]
+            user.first_name = form.cleaned_data["first_name"]
+            user.last_name = form.cleaned_data["last_name"]
+            user.birth_date = form.cleaned_data["birth_date"]
+            user.save()
+            return redirect(request.GET.get('next', '/'))
+    else:
+        form = ProfileForm(initial={
+            "avatar": request.user.avatar,
+            "username": request.user.username,
+            "first_name": request.user.first_name,
+            "last_name": request.user.last_name,
+            "birth_date": request.user.birth_date,
+        })
+        
+    return render(request, 'profile.html', {
+        'form': form
     })
 
 

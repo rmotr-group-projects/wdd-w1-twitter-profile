@@ -1,7 +1,15 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block content %}
-<div class="col-sm-2"></div>
+<div class="col-sm-2">
+  {% if twitter_profile.avatar %}
+    <img src="{{twitter_profile.avatar.url}}" alt="Avatar" class="avatar img-rounded">
+  {% else %}
+    <img src="{% static 'img/default.png' %}" alt="Avatar" class="avatar img-rounded">
+  {% endif %}
+  <h2><strong>@{{twitter_profile.username}}</strong</h2>
+</div>
 <div class="col-sm-8">
 
   {% if request.user == twitter_profile %}
@@ -26,9 +34,6 @@
     </div>
   {% endif %}
   {% if request.path != '/' %}
-  <div class="row">
-    <h2>Browsing <strong>@jack</strong</h2>
-  </div>
   {% endif %}
   <div class="row relationship-button">
     {% if request.user != twitter_profile %}

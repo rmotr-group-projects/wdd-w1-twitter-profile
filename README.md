@@ -9,3 +9,13 @@ As usual, here's a list of pages to show how it should look:
 ### Home page for user with profile picture
 
 ![image](https://cloud.githubusercontent.com/assets/872296/18090592/dd699310-6e9b-11e6-9357-bbb31b16eb53.png)
+
+### User's profile page without profile pic
+
+(A default image should be included)
+
+![image](https://cloud.githubusercontent.com/assets/872296/18095682/0f992280-6eae-11e6-9fe7-20af7d177525.png)
+
+### Update profile page
+
+![image](https://cloud.githubusercontent.com/assets/872296/18095723/3270abde-6eae-11e6-83af-dddc0de024ab.png)

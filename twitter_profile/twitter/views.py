@@ -33,23 +33,21 @@ def home(request, username=None):
             tweet = form.save(commit=False)
             tweet.user = request.user
             tweet.save()
-            # Reset the form
-            form = TweetForm()
             messages.success(request, 'Tweet Created!')
+
+    form = TweetForm()
+
+    if username:
+        user = get_object_or_404(get_user_model(), username=username)
+        form = None
+        tweets = Tweet.objects.filter(user=user)
     else:
-        form = TweetForm()
+        users_following = request.user.following
+        tweets = Tweet.objects.filter(
+            Q(user=user) | Q(user__in=users_following))
 
-        if username:
-            user = get_object_or_404(get_user_model(), username=username)
-            form = None
-            tweets = Tweet.objects.filter(user=user)
-        else:
-            users_following = request.user.following
-            tweets = Tweet.objects.filter(
-                Q(user=user) | Q(user__in=users_following))
-
-        following_profile = (request.user.is_authenticated() and
-                             request.user.is_following(user))
+    following_profile = (request.user.is_authenticated() and
+                         request.user.is_following(user))
     return render(request, 'feed.html', {
         'form': form,
         'twitter_profile': user,

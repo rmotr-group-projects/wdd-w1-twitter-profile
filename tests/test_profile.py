@@ -4,9 +4,6 @@ from datetime import date
 from django.conf import settings
 from django_webtest import WebTest
 from django.contrib.auth import get_user_model
-from django.core.files.uploadedfile import SimpleUploadedFile
-
-from twitter.models import Tweet
 
 User = get_user_model()
 

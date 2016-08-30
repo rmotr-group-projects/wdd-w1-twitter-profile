@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseForbidden
-from django.http.response import HttpResponseNotFound
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import logout as django_logout, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -9,7 +8,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.db.models import Q
 
-from .models import Tweet, Relationship, User
+from .models import Tweet
 from .forms import TweetForm, ProfileForm
 
 
@@ -74,7 +73,7 @@ def profile(request):
             "last_name": request.user.last_name,
             "birth_date": request.user.birth_date,
         })
-        
+
     return render(request, 'profile.html', {
         'form': form
     })

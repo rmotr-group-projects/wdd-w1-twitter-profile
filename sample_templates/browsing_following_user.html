@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html>
 
 <head>
@@ -26,64 +28,40 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
 
+                        <li><a href='/profile'>@santiago</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
 
                     </ul>
                 </div>
             </div>
         </nav>
-
-
-
         <div class="row">
+            <div class="col-sm-2">
+                <img src="images/default.png" alt="Avatar" class="avatar img-rounded">
 
-            <div class="col-sm-2"></div>
+                <h2><strong>@jack</strong</h2>
+            </div>
             <div class="col-sm-8">
-
-
-
-                <div class="row">
-                    <h2>Browsing <strong>@jack</strong</h2>
-                </div>
-
                 <div class="row relationship-button">
-
-
                     <form id="unfollow-jack" role="form" class='tweet-form' action="/unfollow?next=/jack" method="POST">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='Hkw3HPNCb6Zh0Czfi7f4dZkjnkl8AJpF' />
+                        <input type='hidden' name='csrfmiddlewaretoken' value='hfXSjNasq91YVmEEfgsSP8RYa1E5qv1E' />
                         <input type="hidden" name="username" value="jack" />
                         <button type="submit" class="btn btn-danger pull-right">Unfollow</button>
                     </form>
-
-
                 </div>
 
                 <div class="row tweet-feed">
-
-
                     <div class="well well-large tweet-container">
-
                         <div>
                             <strong>@jack</strong>
-                            <span class="label label-primary created-datetime">08/27/2016 10:18 a.m.</span>
-                        </div>
-                        <div class='tweet-content'>Jack&#39;s second tweet</div>
-                    </div>
-
-                    <div class="well well-large tweet-container">
-
-                        <div>
-                            <strong>@jack</strong>
-                            <span class="label label-primary created-datetime">03/21/2006 2:50 a.m.</span>
+                            <span class="label label-primary created-datetime">08/30/2016 3:31 p.m.</span>
                         </div>
                         <div class='tweet-content'>just setting up my twttr</div>
                     </div>
-
                 </div>
             </div>
             <div class="col-sm-2"></div>
         </div>
-
     </div>
 </body>
 

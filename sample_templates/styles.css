@@ -4,3 +4,12 @@ div.body-container {
 div.row {
   margin-bottom: 15px;
 }
+
+.avatar {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

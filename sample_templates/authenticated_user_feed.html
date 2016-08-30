@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+
+
 <html>
+
 <head>
     <title>Twitter clone</title>
 
@@ -25,6 +28,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
 
+                        <li><a href='/profile'>@jack</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
 
                     </ul>
@@ -36,12 +40,18 @@
 
         <div class="row">
 
-            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+
+                <img src="images/jack.jpg" alt="Avatar" class="avatar img-rounded">
+
+                <h2><strong>@jack</strong</h2>
+            </div>
             <div class="col-sm-8">
+
 
                 <div class="row">
                     <form role="form" class='tweet-form' action="" method="POST">
-                        <input type='hidden' name='csrfmiddlewaretoken' value='EWLMomFcnNj2hpWbcxx2M4Puhk3YztiH' />
+                        <input type='hidden' name='csrfmiddlewaretoken' value='hfXSjNasq91YVmEEfgsSP8RYa1E5qv1E' />
                         <div class="form-group ">
                             <textarea class="form-control" name="content" placeholder="Write your tweet here..." required></textarea>
 
@@ -51,32 +61,33 @@
                     </form>
                 </div>
 
+
+                <div class="row relationship-button">
+
+                </div>
+
                 <div class="row tweet-feed">
+
 
                     <div class="well well-large tweet-container">
 
-                        <form id='delete-tweet-form-9' action="/tweet/9/delete?next=/" method="POST">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='EWLMomFcnNj2hpWbcxx2M4Puhk3YztiH' />
-                            <button type="submit" class="close" title="Delete this tweet"><span aria-hidden="true">&times;</span></button>
-                        </form>
-
                         <div>
-                            <strong>@santiagobasulto</strong>
-                            <span class="label label-primary">Aug. 23, 2016, 3:15 p.m.</span>
+                            <strong>@jack</strong>
+                            <span class="label label-primary created-datetime">08/30/2016 3:31 p.m.</span>
                         </div>
-                        <div class='tweet-content'>Second tweet!</div>
+                        <div class='tweet-content'>just setting up my twttr</div>
                     </div>
 
                     <div class="well well-large tweet-container">
 
-                        <form id='delete-tweet-form-8' action="/tweet/8/delete?next=/" method="POST">
-                            <input type='hidden' name='csrfmiddlewaretoken' value='EWLMomFcnNj2hpWbcxx2M4Puhk3YztiH' />
+                        <form id='delete-tweet-form-1' action="/tweet/1/delete?next=/" method="POST">
+                            <input type='hidden' name='csrfmiddlewaretoken' value='hfXSjNasq91YVmEEfgsSP8RYa1E5qv1E' />
                             <button type="submit" class="close" title="Delete this tweet"><span aria-hidden="true">&times;</span></button>
                         </form>
 
                         <div>
-                            <strong>@santiagobasulto</strong>
-                            <span class="label label-primary">Aug. 23, 2016, 3:15 p.m.</span>
+                            <strong>@jack</strong>
+                            <span class="label label-primary created-datetime">08/30/2016 1:22 p.m.</span>
                         </div>
                         <div class='tweet-content'>My first tweet!</div>
                     </div>
@@ -88,7 +99,9 @@
 
     </div>
 </body>
+
 <!-- scripts -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+
 </html>

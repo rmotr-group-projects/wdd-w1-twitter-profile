@@ -63,4 +63,10 @@ class ProfileTestCase(WebTest):
             form.submit()
         self.assertTrue('expected string, int found' in e.exception.message)
         User.objects.get(username='larrypage')
+
+    def test_update_user_profile_unauthenticated(self):
+        """Should return 302 and redirect to login template when user is unauthenticated"""
+        response = self.app.get('/profile')
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response.location.endswith('/login?next=/profile'))
         

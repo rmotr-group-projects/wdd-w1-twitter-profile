@@ -3,7 +3,9 @@
 
 {% block content %}
   <div class="col-sm-2">
-    <img src="{% static "img/default.png" %}" alt="Avatar" class="avatar img-rounded">
+    <img src="
+        {% if twitter_profile.avatar %}{{ twitter_profile.avatar.path }}{% else %}{% static "img/default.png" %}{% endif %}"
+         alt="Avatar" class="avatar img-rounded">
   </div>
   <div class="col-sm-8">
 

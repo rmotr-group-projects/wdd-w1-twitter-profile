@@ -21,6 +21,7 @@ def logout(request):
 def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        form.fields['username'].disabled = True
         if form.is_valid():
             # Do something to update request.user with the form data
             form.save()
@@ -33,6 +34,7 @@ def profile(request):
         'birth_date': request.user.birth_date
     }
     form = ProfileForm(initial=data)
+    form.fields['username'].disabled = True
     
     return render(request, 'profile.html', {'form': form})
 

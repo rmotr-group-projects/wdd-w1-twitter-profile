@@ -60,6 +60,7 @@ def home(request, username=None):
 def profile(request):
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES, instance=request.user)
+        form.fields['username'].disabled = True
         if form.is_valid():
             user = request.user
             user.first_name = form.cleaned_data['first_name']
@@ -69,6 +70,7 @@ def profile(request):
             user.save()
             messages.success(request, 'You have updated your profile!')
     form = UserForm(instance=request.user)
+    form.fields['username'].disabled = True
     return render(request, 'profile.html', context={'form': form})
 
 

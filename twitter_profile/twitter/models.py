@@ -19,7 +19,7 @@ class Relationship(models.Model):
 
 class User(AbstractUser):
     avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
-    birth_date = models.DateTimeField(null=True, blank=True)
+    birth_date = models.DateField(null=True, blank=True)
 
     def follow(self, twitter_profile):
         try:

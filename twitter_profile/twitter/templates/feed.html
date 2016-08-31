@@ -4,8 +4,9 @@
 {% block content %}
   <div class="col-sm-2">
     <img src="
-        {% if twitter_profile.avatar %}{{ twitter_profile.avatar.path }}{% else %}{% static "img/default.png" %}{% endif %}"
+        {% if twitter_profile.avatar %}{{ twitter_profile.avatar.url }}{% else %}{% static "img/default.png" %}{% endif %}"
          alt="Avatar" class="avatar img-rounded">
+          <h2><strong>@{{ user.username }}</strong</h2>
   </div>
   <div class="col-sm-8">
 
@@ -31,11 +32,6 @@
       </div>
     {% endif %}
 
-    {% if request.path != '/' %}
-      <div class="row">
-        <h2>Browsing <strong>@{{ user.username }}</strong</h2>
-      </div>
-    {% endif %}
     <div class="row relationship-button">
       {% if request.user != twitter_profile %}
         {% if following_profile %}

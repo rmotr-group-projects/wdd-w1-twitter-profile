@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if form.errors %}
+    {% for error in form.non_field_errors %}
+      <div class="alert alert-danger" role="alert">{{ error }}</div>
+    {% endfor %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <div class="alert alert-danger" role="alert">{{ field.label }}: {{ error }}</div>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+
+  <div class="row">
+    <div class="col-md-12">
+      <h2>@{{ request.user.username }}'s profile</h2>
+    </div>
+  </div>
+
+
+  <div class="col-md-12">
+    <form role="form" action="" method="POST" enctype="multipart/form-data" class='profile-form'>
+      {% csrf_token %}
+      {#      <div class="row">#}
+      {#      {{ form.username.errors }}#}
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        <input id="id_username" maxlength="30" name="username" type="text" class="form-control"
+               value="{{ form.username.value }}" readonly
+        />
+      </div>
+      {#      </div>#}
+      {#      <div class="row">#}
+      {#      {{ form.first_name.errors }}#}
+      <div class="form-group">
+        {{ form.first_name.label_tag }}
+        <input id="id_first_name" maxlength="30" name="first_name" type="text" class="form-control"
+               value="{{ form.first_name.value }}"/>
+      </div>
+      {#      </div>#}
+      {#      <div class="row">#}
+      {#      {{ form.last_name.errors }}#}
+      <div class="form-group">
+        {{ form.last_name.label_tag }}
+        <input id="id_last_name" maxlength="30" name="last_name" type="text" class="form-control"
+               value="{{ form.last_name.value }}"/>
+      </div>
+      {#      </div>#}
+      {#      <div class="row">#}
+      {#      {{ form.birth_date.errors }}#}
+      <div class="form-group">
+        {{ form.birth_date.label_tag }}
+        <input id="id_birth_date" name="birth_date" class="form-control" type="text"
+               value="{{ form.birth_date.value|date:"Y-m-d" }}"/>
+      </div>
+      {#      </div>#}
+      {#      <div class="row">#}
+      {#      {{ form.avatar.errors }}#}
+          <div class="form-group">
+            <label for="profile-image">Profile Image</label>
+            {{ form.avatar }}
+          </div>
+      {#      </div>#}
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+{% endblock %}
+
+{#<div class="fieldWrapper">#}
+{#    {{ form.subject.errors }}#}
+{#    <label for="{{ form.subject.id_for_label }}">Email subject:</label>#}
+{#    {{ form.subject }}#}
+{#</div>#}

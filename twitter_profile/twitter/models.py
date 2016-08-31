@@ -18,6 +18,10 @@ class Relationship(models.Model):
 
 
 class User(AbstractUser):
+    # Our custom fields go here
+    birth_date = models.DateField(null=True)
+    avatar = models.ImageField(upload_to='avatars/', null=True)
+    
     def follow(self, twitter_profile):
         try:
             Relationship.objects.get(follower=self, following=twitter_profile)

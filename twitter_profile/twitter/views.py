@@ -9,13 +9,34 @@ from django.conf import settings
 from django.db.models import Q
 
 from .models import Tweet
-from .forms import TweetForm
+from .forms import TweetForm, ProfileForm
 
 
 @login_required()
 def logout(request):
     django_logout(request)
     return redirect('/')
+
+@login_required()
+def profile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
+        form.fields['username'].disabled = True
+        if form.is_valid():
+            # Do something to update request.user with the form data
+            form.save()
+            messages.success(request, 'Profile Updated!')
+    
+    data = {
+        'username': request.user.username,
+        'first_name': request.user.first_name,
+        'last_name': request.user.last_name,
+        'birth_date': request.user.birth_date
+    }
+    form = ProfileForm(initial=data)
+    form.fields['username'].disabled = True
+    
+    return render(request, 'profile.html', {'form': form})
 
 
 def home(request, username=None):

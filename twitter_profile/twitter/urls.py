@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^follow', views.follow),
     url(r'^unfollow', views.unfollow),
     url(r'^tweet/(?P<tweet_id>\d+)/delete', views.delete_tweet),
+    url(r'profile', views.profile),
     url(r'^(?P<username>\w+)$', views.home),
     url(r'^$', views.home),
 ]

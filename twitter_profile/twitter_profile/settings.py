@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -119,6 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media files
+# https://docs.djangoproject.com/en/1.9/ref/models/fields/#filefield
+# Search "Using a FileField or an ImageField (see below) in a model"...
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/ubuntu/workspace/twitter_profile/twitter/media/img/'
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'

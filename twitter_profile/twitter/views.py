@@ -20,15 +20,11 @@ def logout(request):
 @login_required()
 def profile(request):
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=request.user)
-        print("Valid form?", form.is_valid())
-        print("Errors:")
-        for error in form.errors:
-            print(error)
+        form = ProfileForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             # Do something to update request.user with the form data
             form.save()
-            messages.success(request, 'Profile Updated')
+            messages.success(request, 'Profile Updated!')
     
     data = {
         'username': request.user.username,
@@ -36,7 +32,7 @@ def profile(request):
         'last_name': request.user.last_name,
         'birth_date': request.user.birth_date
     }
-    form = ProfileForm(initial=data) # Default values?
+    form = ProfileForm(initial=data)
     
     return render(request, 'profile.html', {'form': form})
 

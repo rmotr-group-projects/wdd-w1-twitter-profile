@@ -8,7 +8,7 @@
     <h2><strong>@{{ user.username }}'s profile</strong></h2>
     
     <!-- FORM -->
-    <form role="form" class='profile-form' action="" method="POST">
+    <form role="form" class='profile-form' enctype="multipart/form-data" action="" method="POST">
         {% csrf_token %}
         
         {{ form.as_p }}

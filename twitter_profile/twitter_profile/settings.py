@@ -125,7 +125,7 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/1.9/ref/models/fields/#filefield
 # Search "Using a FileField or an ImageField (see below) in a model"...
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/ubuntu/workspace/twitter_profile/twitter/media/img/'
+MEDIA_ROOT = '/home/ubuntu/workspace/twitter_profile/twitter/media'
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'

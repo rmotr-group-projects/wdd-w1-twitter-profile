@@ -9,7 +9,7 @@ from django.conf import settings
 from django.db.models import Q
 
 from .models import Tweet
-from .forms import TweetForm
+from .forms import TweetForm, UserForm
 
 
 @login_required()
@@ -54,6 +54,24 @@ def home(request, username=None):
         'tweets': tweets,
         'following_profile': following_profile
     })
+
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=request.user)
+        form.fields['username'].disabled = True
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.birth_date = form.cleaned_data['birth_date']
+            user.avatar = form.cleaned_data['avatar']
+            user.save()
+            messages.success(request, 'You have updated your profile!')
+    form = UserForm(instance=request.user)
+    form.fields['username'].disabled = True
+    return render(request, 'profile.html', context={'form': form})
 
 
 @login_required()

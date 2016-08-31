@@ -1,2 +1,4 @@
+-r base.txt
+
 django-webtest==1.7.9
 ipdb==0.10.1

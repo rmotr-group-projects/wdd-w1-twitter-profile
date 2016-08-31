@@ -28,6 +28,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                       {% if request.user.is_authenticated %}
+                        <li><a href="/profile">@{{ request.user }}</a></li>
                         <li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a></li>
                       {% else %}
                         <li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a></li>

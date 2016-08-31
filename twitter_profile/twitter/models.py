@@ -18,6 +18,8 @@ class Relationship(models.Model):
 
 
 class User(AbstractUser):
+    birth_date = models.DateField(auto_now_add=False, auto_now=False, default=None)
+    avatar = models.ImageField(upload_to='avatars', blank=True)
     def follow(self, twitter_profile):
         try:
             Relationship.objects.get(follower=self, following=twitter_profile)

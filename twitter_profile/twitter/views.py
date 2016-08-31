@@ -56,6 +56,11 @@ def home(request, username=None):
     })
 
 
+@login_required
+def profile(request):
+    raise NotImplementedError()
+
+
 @login_required()
 @require_POST
 def follow(request):

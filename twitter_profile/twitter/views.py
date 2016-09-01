@@ -54,14 +54,15 @@ def home(request, username=None):
         'form': form,
         'twitter_profile': user,
         'tweets': tweets,
-        'following_profile': following_profile
+        'following_profile': following_profile,
+        "username": username
     })
 
 @login_required()
 def profile(request):
     user = request.user
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
+        form = ProfileForm(request.POST, request.FILES) #, initial={'username': request.user.username}
         if form.is_valid():
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
@@ -70,13 +71,13 @@ def profile(request):
             user.save()
         return render(request, 'profile.html', {'form': form})
     else:
-        user_info = User.objects.get(username=str(request.user))
+        #user_info = User.objects.get(username=str(request.user))
         form = ProfileForm(initial={
-                                    'username': request.user,
+                                    'username': user.username, #request.
                                     'first_name': user.first_name,
                                     'last_name': user.last_name,
                                     'birth_date': user.birth_date,
-                                    'avatar': user.avatar.name
+                                    'avatar': user.avatar
                                     })
         return render(request, 'profile.html', {'form': form})
 

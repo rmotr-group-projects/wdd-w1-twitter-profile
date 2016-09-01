@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 from . import views
 
@@ -12,4 +14,4 @@ urlpatterns = [
     url(r'^tweet/(?P<tweet_id>\d+)/delete', views.delete_tweet),
     url(r'^(?P<username>\w+)$', views.home),
     url(r'^$', views.home),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

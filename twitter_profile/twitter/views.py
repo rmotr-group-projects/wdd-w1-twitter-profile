@@ -8,8 +8,10 @@ from django.contrib import messages
 from django.conf import settings
 from django.db.models import Q
 
-from .models import Tweet
-from .forms import TweetForm
+import datetime
+
+from .models import Tweet, User
+from .forms import TweetForm, ProfileForm
 
 
 @login_required()
@@ -52,9 +54,31 @@ def home(request, username=None):
         'form': form,
         'twitter_profile': user,
         'tweets': tweets,
-        'following_profile': following_profile
+        'following_profile': following_profile,
+        "username": username
     })
 
+@login_required()
+def profile(request):
+    user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.birth_date = form.cleaned_data['birth_date']
+            user.avatar = form.cleaned_data['avatar']
+            user.save()
+        return render(request, 'profile.html', {'form': form})
+    else:
+        form = ProfileForm(initial={
+                                    'username': user.username,
+                                    'first_name': user.first_name,
+                                    'last_name': user.last_name,
+                                    'birth_date': user.birth_date,
+                                    'avatar': user.avatar
+                                    })
+        return render(request, 'profile.html', {'form': form})
 
 @login_required()
 @require_POST

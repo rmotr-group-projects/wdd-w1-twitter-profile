@@ -132,3 +132,6 @@ MESSAGE_TAGS = {
 }
 
 AUTH_USER_MODEL = 'twitter.User'
+
+MEDIA_ROOT = "/home/ubuntu/workspace/twitter_profile/twitter/media"
+MEDIA_URL = "/media/"

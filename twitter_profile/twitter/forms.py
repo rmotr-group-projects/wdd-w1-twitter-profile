@@ -9,16 +9,7 @@ class TweetForm(forms.ModelForm):
         fields = ['content']
 
 class ProfileForm(forms.Form):
-    
-    #username = forms.CharField(label='Username', max_length=100,required=False,disabled=True)
     first_name = forms.CharField(label='First name', max_length=100,required=False)
     last_name = forms.CharField(label='Last name', max_length=100,required=False)
-    birth_date = forms.DateField(label='Birth date',required=False) #, input_formats='%Y-%m-%d'
-    #comment = forms.CharField(widget=forms.Textarea)
-    avatar = forms.ImageField(label="Profile image",required=False) # widget=forms.ClearableFileInput, 
-
-# class ProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = User
-#         fields = ['username', 'first_name', 'last_name',
-#                     'birth_date', 'avatar']
+    birth_date = forms.DateField(label='Birth date',required=False)
+    avatar = forms.ImageField(label="Profile image",required=False)
